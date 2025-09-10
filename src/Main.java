@@ -3,38 +3,39 @@ import util.RandomGenerator;
 
 public class Main {
     public static void main(String[] args) {
-        CollectionManager manager = new CollectionManager();
+        MLUniversity university = new MLUniversity();
 
-        MLModelCollection collectionA = new MLModelCollection("Collection A");
+        Department visionDept = new Department("Computer Vision Department");
+        MLModelCollection visionModels = visionDept.getModels();
         for (int i = 0; i < 5; i++) {
-            collectionA.addModel(RandomGenerator.randomModel());
+            visionModels.addModel(RandomGenerator.randomModel());
         }
 
-        MLModelCollection collectionB = new MLModelCollection("Collection B");
+        Department nlpDept = new Department("Natural Language Processing Department");
+        MLModelCollection nlpModels = nlpDept.getModels();
         for (int i = 0; i < 5; i++) {
-            collectionB.addModel(RandomGenerator.randomModel());
+            nlpModels.addModel(RandomGenerator.randomModel());
         }
 
-        MLModelCollection collectionC = new MLModelCollection("Collection C");
+        Department roboticsDept = new Department("Robotics and Automation Department");
+        MLModelCollection roboticsModels = roboticsDept.getModels();
         for (int i = 0; i < 5; i++) {
-            collectionC.addModel(RandomGenerator.randomModel());
+            roboticsModels.addModel(RandomGenerator.randomModel());
         }
 
-        manager.addCollection(collectionA);
-        manager.addCollection(collectionB);
-        manager.addCollection(collectionC);
+        university.addDepartment(visionDept);
+        university.addDepartment(nlpDept);
+        university.addDepartment(roboticsDept);
 
-
-        System.out.println("=== Initial Collections ===");
-        manager.printAll();
+        System.out.println("=== Initial University Departments ===");
+        university.printAll();
 
         System.out.println("\n=== Sorted by evaluateScore sum ===");
-        manager.sortByEvaluateScore();
-        manager.printAll();
+        university.sortByEvaluateScore();
+        university.printAll();
 
         System.out.println("\n=== Sorted by individual methods sum ===");
-        manager.sortByIndividual();
-        manager.printAll();
+        university.sortByIndividual();
+        university.printAll();
     }
 }
-
